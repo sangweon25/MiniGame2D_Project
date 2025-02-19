@@ -10,8 +10,12 @@ public class FollowCamera : MonoBehaviour
 
     [SerializeField]private float lerpSpeed = 1.0f;
 
+    private float offsetX;
     private Vector3 offset;
     private Vector3 targetPos;
+
+    public bool onlyMoveX = false;
+
 
     void Start()
     {
@@ -19,7 +23,7 @@ public class FollowCamera : MonoBehaviour
 
         cameraCollider2D = GetComponent<BoxCollider2D>();
 
-        offset = transform.position - followTarget.position;
+        ChoiceOffset(onlyMoveX);
 
         if(cameraCollider2D == null)
             Debug.Log("Null");
@@ -29,9 +33,17 @@ public class FollowCamera : MonoBehaviour
     {
         if (followTarget == null) return;
 
-        targetPos = followTarget.position + offset;
+        if(onlyMoveX)
+        {
+            Vector3 pos = transform.position;
+            pos.x = followTarget.position.x + offsetX;
+            transform.position = pos;
+        }
+        else
+            targetPos = followTarget.position + offset;
 
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime* lerpSpeed);
+        if(onlyMoveX == false)
+            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime* lerpSpeed);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,6 +56,18 @@ public class FollowCamera : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         collider2D = null;
+    }
+
+    private void ChoiceOffset(bool useOffsetX)
+    {
+        if(useOffsetX)
+        {
+            offsetX = transform.position.x - followTarget.position.x;
+        }
+        else
+        {
+            offset = transform.position - followTarget.position;
+        }
     }
 
 }

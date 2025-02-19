@@ -18,6 +18,8 @@ public class Player_Bird : MonoBehaviour
     //새의 기울기의 속도를 결정하는 변수
     [SerializeField] float slope = 10f;
 
+    float deathCoolDown = 0f;
+
     //한번 클릭을 체크하기 위한 bool
     bool isFlap = false;
     //죽은지를 체크하기 위한 bool
@@ -35,7 +37,14 @@ public class Player_Bird : MonoBehaviour
         //매 프레임 죽었다면 체크
         if(isDead)
         {
+            if(deathCoolDown > 0)
+            {
 
+            }
+            else
+            {
+                deathCoolDown -= Time.deltaTime;
+            }
         }
     }
 
@@ -69,5 +78,14 @@ public class Player_Bird : MonoBehaviour
     {
         //Player_Input- Bird- FlapActions에 바인딩 된 키(Left Mouse Button)를 누를때마다 함수 호출 
         isFlap = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDead) return;
+
+        //animator.SetTrigger("IsDie");
+        //isDead = true;
+        //deathCoolDown = 2f;
     }
 }
