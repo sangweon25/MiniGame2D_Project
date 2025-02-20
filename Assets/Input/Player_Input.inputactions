@@ -31,13 +31,31 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ShowScoreUI",
+                    "type": "Button",
+                    "id": "efbe6ae1-ab91-4312-bfdd-5446681e3a8b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DeleteScore",
+                    "type": "Button",
+                    "id": "8a05a778-cc63-4ea8-9f24-a336576fd970",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "de184b71-89de-4d5d-8c9e-2973a37ba00a",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -165,6 +183,56 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "09156c65-9833-40f0-b302-3ee25315a2ff",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowScoreUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ff815a2-ed0b-48b7-9356-4da1bf25125f",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DeleteScore",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Bird",
+            "id": "37e9b14b-c2e3-469a-a097-07c618fbe39d",
+            "actions": [
+                {
+                    "name": "Flap",
+                    "type": "Button",
+                    "id": "2433cb7e-d360-4154-a683-bf9b12fe884e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b6bbedcc-919a-4894-aad4-c81c99c65542",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
