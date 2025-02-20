@@ -25,8 +25,12 @@ public class Player_Bird : MonoBehaviour
     //죽은지를 체크하기 위한 bool
     bool isDead = false;
 
+    MiniGameManager miniGameManager;
+
     void Start()
     {
+        miniGameManager = MiniGameManager.Instance;
+
         //컴포넌트 값을 사용하기 위해 GetComponent~
         birdRigidbody = GetComponent<Rigidbody2D>();  
         animator = GetComponentInChildren<Animator>();
@@ -37,13 +41,16 @@ public class Player_Bird : MonoBehaviour
         //매 프레임 죽었다면 체크
         if(isDead)
         {
-            if(deathCoolDown > 0)
+            //죽고나서 deathCoolDown 시간만큼 기다려야 재시작 가능
+            deathCoolDown -= Time.deltaTime;
+
+            miniGameManager.QuitText();
+            //재시작 가능 시간이 되었다면
+            if (deathCoolDown < 0)
             {
 
-            }
-            else
-            {
-                deathCoolDown -= Time.deltaTime;
+                //현재 미니게임 나가기
+                miniGameManager.Quit_MiniGame();
             }
         }
     }
@@ -78,14 +85,16 @@ public class Player_Bird : MonoBehaviour
     {
         //Player_Input- Bird- FlapActions에 바인딩 된 키(Left Mouse Button)를 누를때마다 함수 호출 
         isFlap = true;
+
+      
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
 
-        //animator.SetTrigger("IsDie");
-        //isDead = true;
-        //deathCoolDown = 2f;
+        animator.SetTrigger("IsDie");
+        isDead = true;
+        deathCoolDown = 2f;
     }
 }

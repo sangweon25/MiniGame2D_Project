@@ -19,6 +19,13 @@ public class Obstacle : MonoBehaviour
     //값만큼 장애물을 띄워주는 역할
     public float widthPadding = 4f;
 
+    MiniGameManager miniGameManager;
+
+    void Start()
+    {
+        miniGameManager = MiniGameManager.Instance;
+    }
+
     public Vector3 SetRandomPlace(Vector3 lastPos, int obstacleCnt)
     {
         //top과 bottom 장애물의 간격의 최소와 최대값을 저장
@@ -39,6 +46,13 @@ public class Obstacle : MonoBehaviour
         transform.position = placePos;
 
         return placePos;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Player_Bird bird = collision.GetComponent<Player_Bird>();
+        if (bird != null)
+            miniGameManager.AddScore(1);
     }
 
 
