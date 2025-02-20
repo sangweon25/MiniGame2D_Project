@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1450703026}
   - component: {fileID: 1450703027}
   - component: {fileID: 1450703028}
-  - component: {fileID: 1450703029}
+  - component: {fileID: 1450703030}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_DefaultActionMap: Fire
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1450703029
+--- !u!114 &1450703030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,9 +323,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1450703023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa43dbf75464460408a7b7475c399c72, type: 3}
+  m_Script: {fileID: 11500000, guid: 326824ca95e3bd64483fd2e7c4bfcec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 1237751800937062550, guid: e82057f7a7034ac4588393f2c36aa024, type: 3}
 --- !u!1001 &1517231020
 PrefabInstance:
   m_ObjectHideFlags: 0
